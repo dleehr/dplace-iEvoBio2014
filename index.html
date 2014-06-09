@@ -182,7 +182,7 @@ With filtering!
 &nbsp; &nbsp; continent = models.CharField(max_length=254)
 &nbsp; &nbsp; tdwg_code = models.IntegerField()
 &nbsp; &nbsp; geom = models.MultiPolygonField(srid=4326)
-&nbsp; &nbsp; objects = models.GeoManager()<br></code></pre>
+&nbsp; &nbsp; objects = models.GeoManager()</code></pre>
 </div>LayerMapping:<div class="fragment" data-fragment-index="1">
 <div>
 <pre><code>geographicregion_mapping = {
