@@ -19,6 +19,9 @@
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+		
+		<!-- jVectorMap CSS-->
+		<link rel="stylesheet" href="lib/css/jquery-jvectormap-1.1.1.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -41,319 +44,310 @@
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+<div class="slides">
+    <section class="" data-id="47931731a25a16a9cead63a648ed8621">
+        <h1>D-PLACE</h1>
+        <h2>
+        </h2>
+        <h2>Integrating Geospatial functionality into a database of human cultural diversity</h2>
+        <br>
 
-				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+<p>Dan Leehr<span>
+        <br>
+    </span>
+    <span>National Evolutionary Synthesis Center<br>
+    </span>
+    <span>
+        <br>
+    </span>
+</p>
+<p>
+<span>iEvoBio 2014</span>
+</p>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+</section>
+<section class="" data-id="6895133e28860e4a026501b1d824cf04">
+    <h2>
+<span>Backstory&nbsp;</span>
+<br>
+</h2>
+<div>
+    <br>
+    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/dleehr/images/458828/NESCent_logo_white.png" style="width: 378.3588317107093px; height: 353.7081805537995px; max-height: none; max-width: none;">
+    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/dleehr/images/458831/5492899300_6198717646_z.jpg" style="width: 485.7459434399629px; height: 355.67653204490176px; max-height: none; max-width: none;">
+    <blockquote>Photo via flickr/dnlee5 </blockquote>
+</div>
+<br>
+</section>
+<section class="stack" data-id="20b661dda46248fb8530ecfe25d83b2a">
+    <section class="" data-id="147ecbed6f32b96ce583339cb0d2a47a">
+        <h2>
+    <span>Technology Backend</span>
+</h2>
+<div>
+    <span>
+        <br>
+    </span>
+</div>
+<div>
+    <ul>
+        <li class="visible" data-fragment-index="0">
+<font style="font-size: 42px;">PostgreSQL</font>
+</li>
+        <li class="visible" data-fragment-index="1">
+<font style="font-size: 42px;">Django</font>
+</li>
+        <li class="visible" data-fragment-index="2">
+<font style="font-size: 42px;">PostGIS + GeoDjango</font>
+</li>
+        <li class="visible" data-fragment-index="3">
+<font style="font-size: 42px;">Django REST Framework</font>
+</li>
+    </ul>
+    </div>
+<div style="text-align: center;">
+    <br>
+</div>
+<p class="fragment" data-fragment-index="0">
+<span>Python + PostgreSQL</span>
+<br>
+</p>
+<p class="fragment" data-fragment-index="1">Fast, sensible models from shapefiles<br>
+<span>Easy GIS queries</span>
+</p>
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+<pre class="fragment" data-fragment-index="2">
+        <code>Society.objects.where(region__intersects=someregion)</code>
+    </pre>
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+<p class="fragment" data-fragment-index="3">
+    <span>JSON for all</span>
+    <br>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+</p>
+</section>
+<section class="" data-id="23bef7fbfc3352e4179c8cc75e6b4732">
+<h2>JSON API</h2>
+<div>
+    <br>
+</div>
+<div>
+<pre><code>$ curl -s http://localhost:8000/api/v1/geographic_regions/?region_nam=Pacific
+{
+&nbsp; &nbsp; "count": 4,
+&nbsp; &nbsp; "next": null,
+&nbsp; &nbsp; "previous": null,
+&nbsp; &nbsp; "results": [
+&nbsp; &nbsp; &nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "continent": "PACIFIC",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "count": 59.0,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "id": 31,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "level_2_re": 60.0,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "region_nam": "Southwestern Pacific",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "tdwg_code": 60
+&nbsp; &nbsp; &nbsp; &nbsp; },
+&nbsp; &nbsp; &nbsp; &nbsp; ...
+&nbsp; &nbsp; ]
+} 
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+</code></pre>
+<p>
+With filtering!
+</p>
+</div>
+<div>
+</div>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
+</section>
+<section class="" data-id="71217f1d97e2e11339ad578d06b33d1f">
+    <h2>Models from Shapefiles</h2>
+<div>
+<pre><code>manage.py ogrinspect level2.shp <b>GeographicRegion</b> --srid=4326 
+           --mapping --multi 
+</code></pre>
+</div>Model:<br>
+<div class="fragment" data-fragment-index="0">
+<pre><code>class <b>GeographicRegion</b>(models.Model):
+&nbsp; &nbsp; level_2_re = models.FloatField()
+&nbsp; &nbsp; count = models.FloatField()
+&nbsp; &nbsp; region_nam = models.CharField(max_length=254)
+&nbsp; &nbsp; continent = models.CharField(max_length=254)
+&nbsp; &nbsp; tdwg_code = models.IntegerField()
+&nbsp; &nbsp; geom = models.MultiPolygonField(srid=4326)
+&nbsp; &nbsp; objects = models.GeoManager()<br></code></pre>
+</div>LayerMapping:<div class="fragment" data-fragment-index="1">
+<div>
+<pre><code>geographicregion_mapping = {
+&nbsp; &nbsp; 'level_2_re' : 'LEVEL_2_RE',
+&nbsp; &nbsp; 'count' : 'COUNT',
+&nbsp; &nbsp; 'region_nam' : 'REGION_NAM',
+&nbsp; &nbsp; 'continent' : 'CONTINENT',
+&nbsp; &nbsp; 'tdwg_code' : 'TDWG_CODE',
+&nbsp; &nbsp; 'geom' : 'MULTIPOLYGON',
 }
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section class="stack" data-id="bc19fca6d232f339ba6791035f4f7079">
+    <section class="" data-id="d02b75faa49d47625945db13ab9cd4fd">
+        <h2>
+    <span>Technology Frontend</span>
+</h2>
+<div>
+    <span>
+        <br>
+    </span>
+</div>
+<div>
+    <ul>
+        <li>
+        <font style="font-size: 42px;">AngularJS</font>
+    </li>
+        <li>
+    <font style="font-size: 42px;">jVectorMap</font>
+</li>
+<li>
+<font style="font-size: 42px;">Bootstrap</font>
+</li>
+        </ul>
+</div>
+<div style="text-align: center;">
+    <br>
+</div>
+<p class="fragment" data-fragment-index="0">AngularJS = MVW, Heroic, Awesome!</p>
+<pre class="fragment" data-fragment-index="1">
+<code>FindSocieties.find({ geographic_regions: geographicRegions }, ...) </code>
+</pre>
+<p data-fragment-index="2" class="fragment">
+<span>Bind Map UI to model</span>
+<br>
+</p>
+<pre class="fragment" data-fragment-index="3">
+<code>&lt;dplace-map selected-regions="model.selectedRegions"&gt;</code>
+</pre>
+<br>
+</section>
+<section class="" data-id="488fc53e14d2777e261ae238cdba54e1">
+<h2>jVectorMap Converter</h2>
+<div>
+<pre><code>converter.py --width 1000 --country_code_index 4 --country_name_index 2
+    level2.shp tdwg-level2-map.js </code></pre>
+</div>
+<div>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+</div>
+<div>Turns this shapefile:
+</div>
+<div class="fragment" data-fragment-index="0">
+<pre><code>Geometry: Polygon
+Feature Count: 52
+Extent: (-180.000000, -90.000000) - (180.000000, 83.623596)
+LEVEL_2_RE: Real (16.6)
+COUNT: Real (11.0)
+REGION_NAM: String (254.0)
+CONTINENT: String (254.0)
+TDWG_CODE: Integer (4.0)
+OGRFeature(level2):0
+&nbsp; LEVEL_2_RE (Real) = 10.000000
+&nbsp; COUNT (Real) = 89
+&nbsp; REGION_NAM (String) = Northern Europe
+&nbsp; CONTINENT (String) = EUROPE
+&nbsp; TDWG_CODE (Integer) = 10
+&nbsp; MULTIPOLYGON (((12.183610916137695 54.880271911621094,12.163610458374023 54.883049011230469,12.150833129882812 54.8861083984375,12.115833282470703 54.904159545898438,12.132221221923828 54.951385498046875,12.135831832885742&nbsp; </code></pre>
+</div>
+<br>
+</section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
+<script src="lib/js/jquery-1.11.1.min.js"></script>
+<script src="lib/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="lib/js/tdwg-level2-map.js"></script>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
+<section class="" data-id="8ce453e7b2af061635c089b439b831c9">
+    <h2>Javascript Map</h2>
+<div>Into this:</div>
+<div data-fragment-index="0" class="fragment" style="width:100%; height:500px;" id="mapdiv"></div>
+<script>
+      $('#mapdiv').vectorMap({
+        map: 'tdwg-level2',
+        backgroundColor: 'clear',
+        regionStyle: {
+          initial: {
+            fill: '#428bca',
+            "fill-opacity": 1,
+            stroke: '#357ebd',
+            "stroke-width": 0,
+            "stroke-opacity": 1
+          },
+          hover: {
+            "fill-opacity": 0.8
+          },
+          selected: {
+            fill: '#113'
+          },
+          selectedHover: {
+          }
+        },
+        regionsSelectable: true
+        });
+</script>
+</section>
+</section>
+<section class="" data-id="a0db34ff170e8411b15b0341453323c6">
+    <h2>Dependency Implications</h2>
+<div>
+    <br>
+</div>
+<div>
+    <ol>
+        <li class="fragment" data-fragment-index="0">Automated Testing -&nbsp;<a href="https://travis-ci.org/NESCent/dplace">Travis</a>
+<img src="https://travis-ci.org/NESCent/dplace.svg?branch=master" li="">
+        </li>
+<li data-fragment-index="1" class="fragment">Up and running &nbsp;with one command&nbsp;<a href="https://github.com/dleehr/dplace-vagrant">Vagrant</a>
+</li>
+<li data-fragment-index="2" class="fragment">JSON API For <a href="http://p.printingchoice.com/8-examples-of-horrific-fine-print/">free</a>*&nbsp;</li>
+</ol>
+<div style="text-align: left;">
+<br>
+</div>
+</div>
+<div style="text-align: left;">
+<br>
+</div>
+<p style="text-align: left; " class="fragment" data-fragment-index="3">
+<font color="#d9d9d9">* <font style="font-size: 24px;">API is not actually free. Processed on servers that also process peanuts. For best results, remove cap first. Do not eat iPod shuffle. Do not use while sleeping. Do not direct steam at &nbsp;people or animals or iron clothes while they are being worn.&nbsp;</font>
+</font>
+</p>
 
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
-
-			</div>
+</section>
+    <section class="" data-id="e804b90bb24ee79f02eda824315d0115">
+        <h2>Summary</h2>
+        <div>Backend is rich and opinionated</div>
+        <div>Frontend is modular and agnostic</div>
+        <div>
+            <br>
+        </div>
+        <div>Fast development, still have control</div>
+        <div>
+            <br>
+        </div>
+        <div>
+            <div>
+                <a href="https://github.com/NESCent/dplace">github.com/NESCent/dplace</a>
+            </div>
+        </div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="0">Questions?</div>
+    </section>
+</div>
 
 		</div>
 
@@ -387,6 +381,13 @@ function linkify( selector ) {
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
+
+    Reveal.addEventListener( 'fragmentshown', function( event ) {
+      console.log(event.fragment);
+        if(event.fragment.id == 'mapdiv') {
+          $('#mapdiv').vectorMap('get','mapObject').setSize();
+        }
+    } );        
 
 		</script>
 
