@@ -49,7 +49,10 @@
         <h1>D-PLACE</h1>
         <h2>
         </h2>
-        <h2>Integrating Geospatial functionality into a database of human cultural diversity</h2>
+        <h2>
+        Integrating Geospatial functionality<br>
+        into a database of human<br>
+        cultural diversity</h2>
         <br>
 
 <p>Dan Leehr<span>
@@ -167,12 +170,12 @@ With filtering!
 <section class="" data-id="71217f1d97e2e11339ad578d06b33d1f">
     <h2>Models from Shapefiles</h2>
 <div>
-<pre><code>manage.py ogrinspect level2.shp <b>GeographicRegion</b> --srid=4326 
+<pre><code>manage.py ogrinspect level2.shp GeographicRegion --srid=4326 
            --mapping --multi 
 </code></pre>
 </div>Model:<br>
 <div class="fragment" data-fragment-index="0">
-<pre><code>class <b>GeographicRegion</b>(models.Model):
+<pre><code>class GeographicRegion(models.Model):
 &nbsp; &nbsp; level_2_re = models.FloatField()
 &nbsp; &nbsp; count = models.FloatField()
 &nbsp; &nbsp; region_nam = models.CharField(max_length=254)
