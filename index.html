@@ -83,6 +83,30 @@
 </div>
 <br>
 </section>
+  <section>
+    <h1>Data</h1>
+    <h2>Spreadsheets with lat/long</h2>
+    <div class="fragment">
+      <h2>Shapefiles</h2>
+      <div>
+      <pre><code>Geometry: Polygon
+  Feature Count: 52
+  Extent: (-180.000000, -90.000000) - (180.000000, 83.623596)
+  LEVEL_2_RE: Real (16.6)
+  COUNT: Real (11.0)
+  REGION_NAM: String (254.0)
+  CONTINENT: String (254.0)
+  TDWG_CODE: Integer (4.0)
+  OGRFeature(level2):0
+  &nbsp; LEVEL_2_RE (Real) = 10.000000
+  &nbsp; COUNT (Real) = 89
+  &nbsp; REGION_NAM (String) = Northern Europe
+  &nbsp; CONTINENT (String) = EUROPE
+  &nbsp; TDWG_CODE (Integer) = 10
+  &nbsp; MULTIPOLYGON (((12.183610916137695 54.880271911621094,12.163610458374023 54.883049011230469,12.150833129882812 54.8861083984375,12.115833282470703 54.904159545898438,12.132221221923828 54.951385498046875,12.135831832885742&nbsp; </code></pre>
+      </div>
+    </div>
+  </section>
 <section class="stack">
   <section>
   <h1>
@@ -106,13 +130,14 @@
       </tr>
     </table>
   </section>
+
   <section>
   <h1><span>Why?</span></h1>
   <div>
     <ul>
       <li>Python &#8594; <a href="http://bit.ly/1jAXbwv">LMGTFY</a>
-      <li>Clear models &#8594; human or machined</li>
-      <li>GIS Queries &#8594;<br>
+      <li>Django &#8594; Great data modeling</li>
+      <li>GIS &#8594; Querying like this:<br>
         <pre><code>Society.objects.where(region__intersects=q)</code></pre>
       </li>
       <li>JSON &#8594; All clients are API clients</li>
@@ -123,7 +148,6 @@
     <h1>Model</h1>
     <h2>From Shapefile</h2>
     <div>
-      <p>Script</p>
       <pre><code>manage.py ogrinspect level2.shp GeographicRegion --srid=4326 
                  --mapping --multi</code></pre>
     </div>
@@ -186,6 +210,7 @@
     <table style="margin-left: auto; margin-right: auto;">
       <tr>
         <td>Code</td><td>&#8594;</td><td>JavaScript</td></tr>
+        <td>UI</td><td>&#8594;</td><td>Bootstrap</td></tr>
         <td>Data</td><td>&#8594;</td><td>JSON</td></tr>
         <td>Maps</td><td>&#8594;</td><td>jVectorMap</td></tr>
       </tr>
@@ -195,15 +220,72 @@
     <h1><span>Why?</span></h1>  
     <div>
       <ul>
-        <li>AngularJS &#8594; MVW, Heroic, Awesome!</li>
-        <li>JSON Data &#8594; AngularJS speaks REST.<br>
+        <li>AngularJS &#8594; Markup becomes dynamic</li>
+        <li>JSON Data &#8594; AngularJS app just a REST client<br>
         <pre><code>FindSocieties.find({ geographic_regions: geographicRegions }, ...)</code></pre>
         </li>
         <li>jVectorMap &#8594; Sensible JS API, Vectors!</li>
       </ul>
     </div>
   </section>
+  <section>
+    <script src="lib/js/jquery-1.11.1.min.js"></script>
+    <script src="lib/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="lib/js/tdwg-level2-map.js"></script>
+    <h1>Map</h1>
+    <p>From Shapefile</p>
+    <div><pre><code>converter.py --width 1000 --country_code_index 4 --country_name_index 2
+      level2.shp tdwg-level2-map.js </code></pre>
+    </div>
+  <div><p>To javascript</p></div>
+  <div data-fragment-index="0" class="fragment" style="width:100%; height:500px;" id="mapdiv"></div>
+  <script>
+        $('#mapdiv').vectorMap({
+          map: 'tdwg-level2',
+          backgroundColor: 'clear',
+          regionStyle: {
+            initial: {
+              fill: '#428bca',
+              "fill-opacity": 1,
+              stroke: '#357ebd',
+              "stroke-width": 0,
+              "stroke-opacity": 1
+            },
+            hover: {
+              "fill-opacity": 0.8
+            },
+            selected: {
+              fill: '#113'
+            },
+            selectedHover: {
+            }
+          },
+          regionsSelectable: true
+          });
+  </script>
+  </section>
+  <section>
+    <h1>AngularJS</h1>
+    <ul>
+      <li>Application framework</li>
+      <li>Talks to REST APIs</li>
+      <li>Wrap up custom code in directives<br>
+        <pre class="fragment"><code>&lt;dplace-map 
+        selected-regions="regions"/&gt;
+&lt;ul&gt;    
+  &lt;li ng-repeat="region in regions"&gt; 
+  {{ region.name }}
+  &lt;/li&gt;
+&lt;/ul&gt;    
+        </code></pre>
+      </li>
+    </ul>
+  </section>
+</section>
   <!-- Reworked up to here -->
+
+
+
 
 <section>
 <div style="text-align: center;">
@@ -217,16 +299,12 @@
 <span>Bind Map UI to model</span>
 <br>
 </p>
-<pre class="fragment" data-fragment-index="3">
-<code>&lt;dplace-map selected-regions="model.selectedRegions"&gt;</code>
-</pre>
 <br>
 </section>
 <section class="" data-id="488fc53e14d2777e261ae238cdba54e1">
 <h2>jVectorMap Converter</h2>
 <div>
-<pre><code>converter.py --width 1000 --country_code_index 4 --country_name_index 2
-    level2.shp tdwg-level2-map.js </code></pre>
+
 </div>
 <div>
 
@@ -234,58 +312,12 @@
 <div>Turns this shapefile:
 </div>
 <div class="fragment" data-fragment-index="0">
-<pre><code>Geometry: Polygon
-Feature Count: 52
-Extent: (-180.000000, -90.000000) - (180.000000, 83.623596)
-LEVEL_2_RE: Real (16.6)
-COUNT: Real (11.0)
-REGION_NAM: String (254.0)
-CONTINENT: String (254.0)
-TDWG_CODE: Integer (4.0)
-OGRFeature(level2):0
-&nbsp; LEVEL_2_RE (Real) = 10.000000
-&nbsp; COUNT (Real) = 89
-&nbsp; REGION_NAM (String) = Northern Europe
-&nbsp; CONTINENT (String) = EUROPE
-&nbsp; TDWG_CODE (Integer) = 10
-&nbsp; MULTIPOLYGON (((12.183610916137695 54.880271911621094,12.163610458374023 54.883049011230469,12.150833129882812 54.8861083984375,12.115833282470703 54.904159545898438,12.132221221923828 54.951385498046875,12.135831832885742&nbsp; </code></pre>
+
 </div>
 <br>
 </section>
 
-<script src="lib/js/jquery-1.11.1.min.js"></script>
-<script src="lib/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="lib/js/tdwg-level2-map.js"></script>
 
-<section class="" data-id="8ce453e7b2af061635c089b439b831c9">
-    <h2>Javascript Map</h2>
-<div>Into this:</div>
-<div data-fragment-index="0" class="fragment" style="width:100%; height:500px;" id="mapdiv"></div>
-<script>
-      $('#mapdiv').vectorMap({
-        map: 'tdwg-level2',
-        backgroundColor: 'clear',
-        regionStyle: {
-          initial: {
-            fill: '#428bca',
-            "fill-opacity": 1,
-            stroke: '#357ebd',
-            "stroke-width": 0,
-            "stroke-opacity": 1
-          },
-          hover: {
-            "fill-opacity": 0.8
-          },
-          selected: {
-            fill: '#113'
-          },
-          selectedHover: {
-          }
-        },
-        regionsSelectable: true
-        });
-</script>
-</section>
 </section>
 <section class="" data-id="a0db34ff170e8411b15b0341453323c6">
     <h2>Dependency Implications</h2>
