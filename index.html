@@ -202,7 +202,7 @@ iEvoBio 2014<br>
     <span>AngularJS</span>
   </h1>
   <div>
-  <p>Declarative, not Deformative
+  <p><blockquote>HTML enhanced for web apps!</blockquote>
   </p>
   </div>
   </section>
@@ -221,30 +221,15 @@ iEvoBio 2014<br>
     <h1><span>Why?</span></h1>  
     <div>
       <ul>
-        <li>AngularJS &#8594; Markup becomes dynamic</li>
-        <li>JSON Data &#8594; AngularJS app just a REST client<br>
-        <pre><code>FindSocieties.find({ geographic_regions: geographicRegions }, ...)</code></pre>
+        <li>AngularJS &#8594; Declarative not deformative</li>
+        <li>JSON/REST &#8594; AngularJS includes REST clients<br>
+        <pre><code>regions = GeographicRegion.query({name:'Pacific'});</code></pre>
         </li>
         <li>jVectorMap &#8594; Sensible JS API, Vectors!</li>
       </ul>
     </div>
-  </section>
-  <section>
-    <h1>AngularJS</h1>
-    <ul>
-      <li>Application framework</li>
-      <li>Talks to REST APIs</li>
-      <li>Wrap up custom code in directives<br>
-        <pre><code>&lt;dplace-map 
-        selected-regions="regions"/&gt;
-&lt;ul&gt;    
-  &lt;li ng-repeat="region in regions"&gt; 
-  {{ region.name }}
-  &lt;/li&gt;
-&lt;/ul&gt;    
-        </code></pre>
-      </li>
-    </ul>
+    <p>&nbsp;</p>
+    <p>JavaScript alone can do a lot</p>
   </section>
   <section>
     <script src="lib/js/jquery-1.11.1.min.js"></script>
@@ -281,10 +266,28 @@ iEvoBio 2014<br>
           regionsSelectable: true
           });
   </script>
+  </section>  
+  <section>
+    <h1>AngularJS</h1>
+    <ul>
+      <li>Data Binding</li>
+      <li>Disregard the DOM</li>
+      <li>Wrap up custom code in directives<br>
+        <pre><code>&lt;dplace-map 
+        selected-regions="regions"/&gt;
+&lt;ul&gt;    
+  &lt;li ng-repeat="region in regions"&gt; 
+  {{ region.name }}
+  &lt;/li&gt;
+&lt;/ul&gt;    
+        </code></pre>
+      </li>
+    </ul>
   </section>
+
 </section>
 <section data-autoslide="5000">
-  <h1>Dependency Monster</h1>
+  <h1>Dependencies</h1>
 </section>
 <section>
   <h1>Keeping Order</h1>
