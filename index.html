@@ -63,7 +63,7 @@ iEvoBio 2014<br>
 </p>
 
 </section>
-<section data-autoslide="10000">
+<section>
     <h1>Working Group</h1>
 <div>
 <p><a href="http://nescent.org/science/awards_summary.php?id=400">Explaining cultural diversity: A new evolutionary synthesis</a></p>
@@ -73,32 +73,22 @@ iEvoBio 2014<br>
   <li>Fiona Jordan (University of Bristol)</li>
   <li>Russell Gray (The University of Auckland)</li>
 </ul>
-<br>
+<p><br></p>
+<ol>
+<li>WGs meet at NESCent</li>
+<li>They collect data in spreadsheets</li>
+<li>I build a web app around a database.</li>
+</ul>
 </section>
-  <section>
+  <section data-autoslide="7500">
     <h1>Data</h1>
+    <h2>Spreadsheets</h2>
     <ul>
-      <li>Spreadsheets
-      <ul><li>Cultural, Environmental, Language, Geographic</li></ul>
-      <li>Shapefiles</li>
+      <li>Cultural</li>
+      <li>Environmental</li>
+      <li>Language</li>
+      <li>Geographic</li>
     </ul>
-    <div>
-      <pre><code>Geometry: Polygon
-  Feature Count: 52
-  Extent: (-180.000000, -90.000000) - (180.000000, 83.623596)
-  LEVEL_2_RE: Real (16.6)
-  COUNT: Real (11.0)
-  REGION_NAM: String (254.0)
-  CONTINENT: String (254.0)
-  TDWG_CODE: Integer (4.0)
-  OGRFeature(level2):0
-  &nbsp; LEVEL_2_RE (Real) = 10.000000
-  &nbsp; COUNT (Real) = 89
-  &nbsp; REGION_NAM (String) = Northern Europe
-  &nbsp; CONTINENT (String) = EUROPE
-  &nbsp; TDWG_CODE (Integer) = 10
-  &nbsp; MULTIPOLYGON (((12.183610916137695 54.880271911621094,12.163610458374023 54.883049011230469,12.150833129882812 54.8861083984375,12.115833282470703 54.904159545898438,12.132221221923828 54.951385498046875,12.135831832885742&nbsp; </code></pre>
-  </div>
   </section>
 <section class="stack">
   <section data-autoslide="5000">
@@ -123,7 +113,6 @@ iEvoBio 2014<br>
       </tr>
     </table>
   </section>
-
   <section>
   <h1><span>Why?</span></h1>
   <div>
@@ -137,8 +126,28 @@ iEvoBio 2014<br>
   </div>
   </section>
   <section>
-    <h1>Model</h1>
-    <h2>From Shapefile</h2>
+    <h1>Shapefile</h1>
+    <div>
+      <pre><code>Geometry: Polygon
+  Feature Count: 52
+  Extent: (-180.000000, -90.000000) - (180.000000, 83.623596)
+  LEVEL_2_RE: Real (16.6)
+  COUNT: Real (11.0)
+  REGION_NAM: String (254.0)
+  CONTINENT: String (254.0)
+  TDWG_CODE: Integer (4.0)
+  OGRFeature(level2):0
+  &nbsp; LEVEL_2_RE (Real) = 10.000000
+  &nbsp; COUNT (Real) = 89
+  &nbsp; REGION_NAM (String) = Northern Europe
+  &nbsp; CONTINENT (String) = EUROPE
+  &nbsp; TDWG_CODE (Integer) = 10
+  &nbsp; MULTIPOLYGON (((12.183610916137695 54.880271911621094,12.163610458374023 54.883049011230469,12.150833129882812 54.8861083984375,12.115833282470703 54.904159545898438,12.132221221923828 54.951385498046875,12.135831832885742&nbsp; </code></pre>
+  </div>  
+  </section>  
+  <section>
+    <h1>Django Model</h1>
+    <h2>Script:</h2>
     <div>
       <pre><code>manage.py ogrinspect level2.shp GeographicRegion --srid=4326 
                  --mapping --multi</code></pre>
