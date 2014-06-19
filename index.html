@@ -119,96 +119,54 @@
     </ul>
   </div>
   </section>
-  <!-- reworked up to here -->
   <section>
-
-
-  <div>
+    <h1>Model</h1>
+    <h2>From Shapefile</h2>
+    <div>
+      <p>Script</p>
+      <pre><code>manage.py ogrinspect level2.shp GeographicRegion --srid=4326 
+                 --mapping --multi</code></pre>
     </div>
-<div style="text-align: center;">
-    <br>
-</div>
-<p class="fragment" data-fragment-index="0">
-<span>Python + PostgreSQL</span>
-<br>
-</p>
-<p class="fragment" data-fragment-index="1">Fast, sensible models from shapefiles<br>
-<span>Easy GIS queries</span>
-</p>
+    <div><br></div>
+    <div class="fragment" data-fragment-index="1">
+      <p>Generates:</p>
+      <pre><code>class GeographicRegion(models.Model):
+      &nbsp; &nbsp; level_2_re = models.FloatField()
+      &nbsp; &nbsp; count = models.FloatField()
+      &nbsp; &nbsp; region_nam = models.CharField(max_length=254)
+      &nbsp; &nbsp; continent = models.CharField(max_length=254)
+      &nbsp; &nbsp; tdwg_code = models.IntegerField()
+      &nbsp; &nbsp; geom = models.MultiPolygonField(srid=4326)
+      &nbsp; &nbsp; objects = models.GeoManager()</code></pre>
+    </div>
+  </section>
 
-
-<p class="fragment" data-fragment-index="3">
-    <span>JSON for all</span>
-    <br>
-
-
-</p>
+  <section>
+    <h1>JSON Client</h1>
+    <div>
+      <pre><code>$ curl -s http://localhost:8000/api/v1/geographic_regions/&nbsp;&#10552;
+      &nbsp; &nbsp; ?region_nam=Pacific
+      {
+      &nbsp; &nbsp; "count": 4,
+      &nbsp; &nbsp; "next": null,
+      &nbsp; &nbsp; "previous": null,
+      &nbsp; &nbsp; "results": [
+      &nbsp; &nbsp; &nbsp; &nbsp; {
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "continent": "PACIFIC",
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "count": 59.0,
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "id": 31,
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "level_2_re": 60.0,
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "region_nam": "Southwestern Pacific",
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "tdwg_code": 60
+      &nbsp; &nbsp; &nbsp; &nbsp; },
+      &nbsp; &nbsp; &nbsp; &nbsp; ...
+      &nbsp; &nbsp; ]
+      }</code></pre>
+      <p>Intuitive filtering, including geography</p>
+    </div>
+  </section>
 </section>
-<section class="" data-id="23bef7fbfc3352e4179c8cc75e6b4732" data-autoslide="15000">
-<h2>JSON API</h2>
-<div>
-    <br>
-</div>
-<div>
-<pre><code>$ curl -s http://localhost:8000/api/v1/geographic_regions/?region_nam=Pacific
-{
-&nbsp; &nbsp; "count": 4,
-&nbsp; &nbsp; "next": null,
-&nbsp; &nbsp; "previous": null,
-&nbsp; &nbsp; "results": [
-&nbsp; &nbsp; &nbsp; &nbsp; {
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "continent": "PACIFIC",
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "count": 59.0,
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "id": 31,
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "level_2_re": 60.0,
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "region_nam": "Southwestern Pacific",
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "tdwg_code": 60
-&nbsp; &nbsp; &nbsp; &nbsp; },
-&nbsp; &nbsp; &nbsp; &nbsp; ...
-&nbsp; &nbsp; ]
-} 
-
-</code></pre>
-<p>
-With filtering!
-</p>
-</div>
-<div>
-</div>
-
-
-</section>
-<section class="" data-id="71217f1d97e2e11339ad578d06b33d1f">
-    <h2>Models from Shapefiles</h2>
-<div>
-<pre><code>manage.py ogrinspect level2.shp GeographicRegion --srid=4326 
-           --mapping --multi 
-</code></pre>
-</div>Model:<br>
-<div class="fragment" data-fragment-index="0">
-<pre><code>class GeographicRegion(models.Model):
-&nbsp; &nbsp; level_2_re = models.FloatField()
-&nbsp; &nbsp; count = models.FloatField()
-&nbsp; &nbsp; region_nam = models.CharField(max_length=254)
-&nbsp; &nbsp; continent = models.CharField(max_length=254)
-&nbsp; &nbsp; tdwg_code = models.IntegerField()
-&nbsp; &nbsp; geom = models.MultiPolygonField(srid=4326)
-&nbsp; &nbsp; objects = models.GeoManager()</code></pre>
-</div>LayerMapping:<div class="fragment" data-fragment-index="1">
-<div>
-<pre><code>geographicregion_mapping = {
-&nbsp; &nbsp; 'level_2_re' : 'LEVEL_2_RE',
-&nbsp; &nbsp; 'count' : 'COUNT',
-&nbsp; &nbsp; 'region_nam' : 'REGION_NAM',
-&nbsp; &nbsp; 'continent' : 'CONTINENT',
-&nbsp; &nbsp; 'tdwg_code' : 'TDWG_CODE',
-&nbsp; &nbsp; 'geom' : 'MULTIPOLYGON',
-}
-</code></pre>
-</div>
-</div>
-</section>
-</section>
+<!-- Reworked up to here -->
 <section class="stack" data-id="bc19fca6d232f339ba6791035f4f7079">
     <section class="" data-id="d02b75faa49d47625945db13ab9cd4fd">
         <h2>
