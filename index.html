@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -48,8 +48,6 @@
     <section class="" data-id="47931731a25a16a9cead63a648ed8621">
         <h1>D-PLACE</h1>
         <h2>
-        </h2>
-        <h2>
         Integrating Geospatial functionality<br>
         into a database of human<br>
         cultural diversity</h2>
@@ -73,10 +71,10 @@
 
 </section>
 <section class="" data-id="6895133e28860e4a026501b1d824cf04">
-    <h2>
+    <h1>
 <span>Backstory&nbsp;</span>
 <br>
-</h2>
+</h1>
 <div>
     <br>
     <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/dleehr/images/458828/NESCent_logo_white.png" style="width: 378.3588317107093px; height: 353.7081805537995px; max-height: none; max-width: none;">
@@ -85,31 +83,47 @@
 </div>
 <br>
 </section>
-<section class="stack" data-id="20b661dda46248fb8530ecfe25d83b2a">
-    <section class="" data-id="147ecbed6f32b96ce583339cb0d2a47a">
-        <h2>
+<section class="stack">
+  <section>
+  <h1>
     <span>Technology Backend</span>
-</h2>
-<div>
-    <span>
-        <br>
-    </span>
-</div>
-<div>
+  </h1>
+  </section>
+  <section>
+  <h1>
+    <span>Django</span>
+  </h1>
+    <h2><span>Python Framework</span></h2>
+  </section>
+  <section>
+  <h1><span>Stack</span></h1>
+    <table style="margin-left: auto; margin-right: auto;">
+      <tr>
+        <td>Code</td><td>&#8594;</td><td>Python</td></tr>
+        <td>Data</td><td>&#8594;</td><td>PostgreSQL</td></tr>
+        <td>GIS</td><td>&#8594;</td><td>PostGIS + GeoDjango</td></tr>
+        <td>JSON</td><td>&#8594;</td><td>Django REST Framework</td></tr>
+      </tr>
+    </table>
+  </section>
+  <section>
+  <h1><span>Why?</span></h1>
+  <div>
     <ul>
-        <li class="visible" data-fragment-index="0">
-<font style="font-size: 42px;">PostgreSQL</font>
-</li>
-        <li class="visible" data-fragment-index="1">
-<font style="font-size: 42px;">Django</font>
-</li>
-        <li class="visible" data-fragment-index="2">
-<font style="font-size: 42px;">PostGIS + GeoDjango</font>
-</li>
-        <li class="visible" data-fragment-index="3">
-<font style="font-size: 42px;">Django REST Framework</font>
-</li>
+      <li>Python &#8594; <a href="http://bit.ly/1jAXbwv">LMGTFY</a>
+      <li>Clear models &#8594; human or machined</li>
+      <li>GIS Queries &#8594;<br>
+        <pre><code>Society.objects.where(region__intersects=q)</code></pre>
+      </li>
+      <li>JSON &#8594; All clients are API clients</li>
     </ul>
+  </div>
+  </section>
+  <!-- reworked up to here -->
+  <section>
+
+
+  <div>
     </div>
 <div style="text-align: center;">
     <br>
@@ -122,9 +136,6 @@
 <span>Easy GIS queries</span>
 </p>
 
-<pre class="fragment" data-fragment-index="2">
-        <code>Society.objects.where(region__intersects=someregion)</code>
-    </pre>
 
 <p class="fragment" data-fragment-index="3">
     <span>JSON for all</span>
@@ -133,7 +144,7 @@
 
 </p>
 </section>
-<section class="" data-id="23bef7fbfc3352e4179c8cc75e6b4732">
+<section class="" data-id="23bef7fbfc3352e4179c8cc75e6b4732" data-autoslide="15000">
 <h2>JSON API</h2>
 <div>
     <br>
@@ -366,6 +377,7 @@ OGRFeature(level2):0
 				progress: true,
 				history: true,
 				center: true,
+				autoSlide: 15000,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
