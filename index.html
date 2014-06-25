@@ -215,10 +215,28 @@ iEvoBio 2014<br>
     <p>JavaScript alone can do a lot</p>
   </section>
   <section>
+    <h1>AngularJS</h1>
+    <ul>
+      <li>Data Binding</li>
+      <li>Disregard the DOM</li>
+      <li>Wrap up custom code in directives<br>
+        <pre><code>&lt;dplace-map 
+        selected-regions="regions"/&gt;
+&lt;ul&gt;    
+  &lt;li ng-repeat="region in regions"&gt; 
+  {{ region.name }}
+  &lt;/li&gt;
+&lt;/ul&gt;    
+        </code></pre>
+      </li>
+      <li>Much more - it's a rich framework</li>
+    </ul>
+  </section>
+  <section>
     <script src="lib/js/jquery-1.11.1.min.js"></script>
     <script src="lib/js/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="lib/js/tdwg-level2-map.js"></script>
-    <h1>Map</h1>
+    <h1>jVectorMap</h1>
     <p>From Shapefile</p>
     <div><pre><code>converter.py --width 1000 --country_code_index 4 --country_name_index 2
       level2.shp tdwg-level2-map.js </code></pre>
@@ -249,26 +267,7 @@ iEvoBio 2014<br>
           regionsSelectable: true
           });
   </script>
-  </section>  
-  <section>
-    <h1>AngularJS</h1>
-    <ul>
-      <li>Data Binding</li>
-      <li>Disregard the DOM</li>
-      <li>Wrap up custom code in directives<br>
-        <pre><code>&lt;dplace-map 
-        selected-regions="regions"/&gt;
-&lt;ul&gt;    
-  &lt;li ng-repeat="region in regions"&gt; 
-  {{ region.name }}
-  &lt;/li&gt;
-&lt;/ul&gt;    
-        </code></pre>
-      </li>
-      <li>Much more - it's a rich framework</li>
-    </ul>
   </section>
-
 </section>
 <section data-autoslide="5000">
   <h1>Dependencies</h1>
